@@ -1,5 +1,8 @@
 package br.com.alura.curso;
 
+import java.util.Collections;
+import java.util.Set;
+
 public class TesteCursoComAluno {
 
 	public static void main(String[] args) {
@@ -22,5 +25,15 @@ public class TesteCursoComAluno {
 		javaColecoes.getAlunos().forEach(aluno -> {
 		    System.out.println(aluno);
 		});
+		
+		
+		Set<Aluno> alunos = javaColecoes.getAlunos();
+		
+		alunos.add(a3); //Recebemos uma exceção do tipo UnsupportedOperationException
+		//pois o conjunto não pode ser modificado pois retornamos na classe Curso um Collections.unmodifiableSet(alunos).
+	
+		 Set<Aluno> alunosSincronizados = Collections.synchronizedSet(alunos);
+//		 transformar uma coleção comum em uma coleção para threads. É justamente isso que o método faz, retorna um nova coleção que pode ser compartilhada entre threads sem perigos.
+		 
 	}
 }
