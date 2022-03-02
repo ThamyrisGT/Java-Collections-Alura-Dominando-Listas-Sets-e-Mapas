@@ -63,7 +63,7 @@ public class TesteCursoComAluno {
 			//    System.out.println(aluno);
 			//}
 			
-			// método mais antigooo Iterator
+			// método mais antigooo , antes do Java 5 - Iterator
 			Set<Aluno> alunosIterator = javaColecoes.getAlunos();
 			Iterator<Aluno> iterador = alunosIterator.iterator();
 

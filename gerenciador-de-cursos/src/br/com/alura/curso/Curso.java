@@ -15,7 +15,9 @@ public class Curso {
 	private Set<Aluno> alunos = new HashSet<>(); 
 	//TreeSet - árvora rubro negra - só funciona com classes que são Comparable e quanda na ordem natural dos objetos - busca mais rápido que as Listas mas nao tao rápido quanto Sets
 	// LinkedHashSet- garante a ordem de inserção,tbm utiliza a estrutura de tabela de espalhamento
-	
+	//se estamos trabalhando com uma instância de uma classe que não temos acesso ou não 
+	//podemos modificar para implementar Comparable,Nesse caso, o construtor do TreeSet
+	//recebe como parâmetro um objeto que implementa Comparator. Dessa forma, o critério de comparação pode ser criado em separado da classe na qual opera.
 	
 	// sempre mais vantajoso usar o List do lado esquerdo, sem especificar o tipo da
 	// lista, isso facilita para manutenção do código,
