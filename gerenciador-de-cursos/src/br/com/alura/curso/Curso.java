@@ -6,18 +6,25 @@ import java.util.List;
 
 public class Curso {
 
+	private Integer tempoTotal;
 	private String nome;
 	private String instrutor;
-	// sempre mais vantajoso usar o List do lado esquerdo, sem especificar o tipo da lista, isso facilita para manutenção do código, 
-	//e também para deixar o código mais "escondido" - codar na defensiva
+	// sempre mais vantajoso usar o List do lado esquerdo, sem especificar o tipo da
+	// lista, isso facilita para manutenção do código,
+	// e também para deixar o código mais "escondido" - codar na defensiva
 	private List<Aula> aulas = new LinkedList<Aula>(); // LinkedList é melhor quando precisa adicionar ou remover do
-														// inicio ou do fim da lista, porque ela altera os ponteiros, as referências de maneira bem rápida
-														// mas é muito lenta para buscar elementos, ela "conta" até chegar no index que você deseja
-	                                                    // já o ArrayList insere muito rápido os elementos na lista e para buscar também
+														// inicio ou do fim da lista, porque ela altera os ponteiros, as
+														// referências de maneira bem rápida
+														// mas é muito lenta para buscar elementos, ela "conta" até
+														// chegar no index que você deseja
+														// já o ArrayList insere muito rápido os elementos na lista e
+														// para buscar também
 														// é muito facil
-														// - acesso aleatório, (quando trabalha muito com for etc,), porém para adc
+														// - acesso aleatório, (quando trabalha muito com for etc,),
+														// porém para adc
 														// elemento no inicio , por exemplo
-														// ele precisa empurrar todos os elementos para frente, isso é custoso
+														// ele precisa empurrar todos os elementos para frente, isso é
+														// custoso
 
 	public Curso(String nome, String instrutor) {
 		this.nome = nome;
@@ -41,5 +48,22 @@ public class Curso {
 
 	public void adiciona(Aula aula) {
 		this.aulas.add(aula);
+		this.tempoTotal += aula.getTempo();
 	}
+
+	public int getTempoTotal() {
+		return this.aulas.stream().mapToInt(Aula::getTempo).sum();
+//		int tempoTotal = 0;
+//		for (Aula aula : aulas) {
+//			tempoTotal += aula.getTempo();
+//		}
+//		return tempoTotal;
+	}
+
+	@Override
+	public String toString() {
+        return "[Curso: " + this.getNome() + ", tempo total: " + this.getTempoTotal()
+        + ", aulas: + " + this.aulas + "]";
+	}
+	
 }
