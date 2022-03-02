@@ -1,6 +1,7 @@
 package br.com.alura.curso;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Set;
 
 public class TesteCursoComAluno {
@@ -54,5 +55,24 @@ public class TesteCursoComAluno {
 			System.out.println(javaColecoes.estaMatriculado(turini));
 			
 			System.out.println(	a1.hashCode() == turini.hashCode());
+			
+			
+			
+			// antes do Java 8
+			//for (Aluno aluno : javaColecoes.getAlunos()) {
+			//    System.out.println(aluno);
+			//}
+			
+			// método mais antigooo Iterator
+			Set<Aluno> alunosIterator = javaColecoes.getAlunos();
+			Iterator<Aluno> iterador = alunosIterator.iterator();
+
+			while (iterador.hasNext()) {
+				Aluno proximo = iterador.next();
+			    System.out.println(proximo);
+			}
+			
+			
+			//Vector<Aluno> vetor = new Vector<>(); antigo pouco utilizado - é threadSafe
 	}
 }

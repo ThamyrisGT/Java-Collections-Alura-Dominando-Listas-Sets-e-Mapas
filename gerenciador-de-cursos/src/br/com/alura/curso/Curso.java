@@ -11,7 +11,12 @@ public class Curso {
 	private Integer tempoTotal;
 	private String nome;
 	private String instrutor;
-	private Set<Aluno> alunos = new HashSet<>();
+	
+	private Set<Aluno> alunos = new HashSet<>(); 
+	//TreeSet - árvora rubro negra - só funciona com classes que são Comparable e quanda na ordem natural dos objetos - busca mais rápido que as Listas mas nao tao rápido quanto Sets
+	// LinkedHashSet- garante a ordem de inserção,tbm utiliza a estrutura de tabela de espalhamento
+	
+	
 	// sempre mais vantajoso usar o List do lado esquerdo, sem especificar o tipo da
 	// lista, isso facilita para manutenção do código,
 	// e também para deixar o código mais "escondido" - codar na defensiva
