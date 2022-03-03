@@ -1,9 +1,12 @@
 package br.com.alura.curso;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class Curso {
@@ -11,9 +14,11 @@ public class Curso {
 	private Integer tempoTotal;
 	private String nome;
 	private String instrutor;
-	
+	//HashTable : antigo, threadSafe,
+	//LinkedHashMap : de acordo com a inserção de cada put, ele guarda a ordem das linhas, entao se for percorrer, vai ser feito na ordem de inserção dessas linhas,dos put
+	private Map<Integer, Aluno> matriculaParaAluno = new HashMap<>();
 	private Set<Aluno> alunos = new HashSet<>(); 
-	//TreeSet - árvora rubro negra - só funciona com classes que são Comparable e quanda na ordem natural dos objetos - busca mais rápido que as Listas mas nao tao rápido quanto Sets
+	//TreeSet - árvora rubro negra - só funciona com classes que são Comparable e  ordena natural dos objetos(ordena os seus elementos na hora da inserção.o critério da ordenação depende e pode ser definido através de um Comparator.) - busca mais rápido que as Listas mas nao tao rápido quanto Sets
 	// LinkedHashSet- garante a ordem de inserção,tbm utiliza a estrutura de tabela de espalhamento
 	//se estamos trabalhando com uma instância de uma classe que não temos acesso ou não 
 	//podemos modificar para implementar Comparable,Nesse caso, o construtor do TreeSet
@@ -82,10 +87,26 @@ public class Curso {
 
 	public void matricula(Aluno aluno) {
 		this.alunos.add(aluno);
+		this.matriculaParaAluno.put(aluno.getNumeroMatricula(), aluno);
 	}
 
 	public boolean estaMatriculado(Aluno aluno) {
 	    return this.alunos.contains(aluno);
 	}
+
+	
+	public Aluno buscaMatriculado(int numero) {
+	    return this.matriculaParaAluno.get(numero);
+	}
+	
+//	public Aluno buscaMatriculado(int numero) {
+//	    for (Aluno aluno : alunos) {
+//	        if (aluno.getNumeroMatricula() == numero) {
+//	            return aluno;
+//	        }
+//	    }
+//	    throw new NoSuchElementException("Matricula " + numero
+//	            + " não encontrada");
+//	}
 
 }
